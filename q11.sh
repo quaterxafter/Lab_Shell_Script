@@ -1,7 +1,8 @@
 for file in $(find . -type f -name "p*.c")
 do
   trimmedName=`echo $file | cut -d'/' -f2 | cut -d'.' -f1`
-  if [ -f$trimmedName]
+  gcc -o $trimmedName $file
+  if [ -f $trimmedName ]
   then
      ans=$(./$trimmedName)
    if [ $ans = 20 ]
@@ -13,7 +14,5 @@ fi
 else
     point=5
 fi
-  printf "%s%s\n" $file $point
+  echo $file $point
 done
-
-  
